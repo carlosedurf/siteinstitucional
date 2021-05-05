@@ -1,7 +1,15 @@
 <?php
 
+use App\Http\Controllers\{AboutController,
+    BlogController,
+    ContactController,
+    HomeController,
+    ProductController,
+    ServiceController
+};
+use App\Http\Controllers\Admin\{DashboardController};
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController,AboutController,ProductController,ServiceController,BlogController, ContactController};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +30,11 @@ Route::get('servicos/{id}', [ServiceController::class, 'show'])->name('services.
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/{id}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('fale-conosco', [ContactController::class, 'index'])->name('contact');
+
+//Auth::routes();
+
+//Route::prefix('admin.')->name('admin')->group(function () {
+//    Route::get('/', [DashboardController::class, 'index'])->name('home');
+//});
+
+Route::get('admin', [DashboardController::class, 'index'])->name('admin.home');
